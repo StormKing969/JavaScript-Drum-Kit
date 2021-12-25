@@ -1,5 +1,5 @@
 function removeTransition(e) {
-    if (e.propertyName !== 'transform') return;
+    if (e.propertyName !== 'transform') return; // skip if it's not a transform
     e.target.classList.remove('playing');
 }
 
@@ -14,5 +14,9 @@ function playSound(e) {
 }
 
 const keys = Array.from(document.querySelectorAll('.key'));
+// The transitionend event is fired when a CSS transition has completed.
 keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+
+
 window.addEventListener('keydown', playSound);
